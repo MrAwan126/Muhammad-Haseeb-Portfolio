@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Haseeb | Front-End Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2937;
+      --accent: #3b82f6;
+      --card-bg: #f3f4f6;
+    }
+    [data-theme="dark"] {
+      --bg: #1f2937;
+      --text: #f3f4f6;
+      --accent: #60a5fa;
+      --card-bg: #374151;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    header, footer, section { padding: 2rem 1rem; }
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: var(--bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    nav a {
+      margin: 0 0.5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .hero {
+      text-align: center;
+      padding: 6rem 1rem;
+      background: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=820&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      animation: fadeInUp 1s ease-in-out;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      background: linear-gradient(90deg, #3b82f6, #6366f1);
+      color: #fff;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    .portfolio {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 2rem 0;
+    }
+    .project {
+      background: var(--card-bg);
+      border-left: 6px solid var(--accent);
+      padding: 1rem;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    .project:hover { background: #e0e7ff; }
+    .project-title { font-weight: bold; font-size: 1.25rem; }
+    .project-desc { margin: 0.5rem 0; }
+    .project a {
+      text-decoration: underline;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .skills { padding: 2rem 0; }
+    .skill { margin-bottom: 1rem; }
+    .skill label { display: block; font-weight: 600; }
+    .bar {
+      background: #e5e7eb;
+      height: 10px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .bar span {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      animation: fill 2s ease-in-out forwards;
+    }
+    @keyframes fill {
+      from { width: 0; }
+      to { width: var(--fill); }
+    }
+    .timeline, .testimonials, .blog { margin: 2rem 0; }
+    .testimonial, .experience, .article {
+      background: var(--card-bg);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+    }
+    .theme-toggle { cursor: pointer; font-size: 1.2rem; }
+    .scroll-top {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none;
+      z-index: 9999;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><strong>Muhammad Haseeb</strong></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#skills">Skills</a>
+      <a href="#timeline">Experience</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <span class="theme-toggle" onclick="toggleTheme()">🌙</span>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Hi, I'm Muhammad Haseeb</h1>
+    <p>A passionate Front-End Developer from Pakistan focused on creating stunning, interactive websites.</p>
+    <a class="btn" href="#portfolio">View My Work</a>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m Muhammad Haseeb, a passionate and self-taught Front-End Developer from Pakistan, driven by creativity, precision, and a love for building seamless user experiences on the web. My journey began with a deep curiosity for how the web works, which quickly turned into a full-blown obsession with crafting clean, elegant, and highly interactive websites using HTML, CSS, and JavaScript.
+
+Over time, I’ve sharpened my skills by developing complete web interfaces, cloning real-world platforms, and creating mini-projects that solve real problems. Some of my standout works include <mark>Boogle</mark> – an offline search UI interface that mimics the core feel of Google, and <mark>MazeBook</mark> – a beautifully cloned login page inspired by Facebook, with a modern twist.
+
+I specialize in building:
+
+Responsive and mobile-friendly websites
+
+Dark/light theme user interfaces
+
+Animated elements for high engagement
+
+Modular and clean code structures
+
+I strongly believe in continuous learning and improvement. I spend hours experimenting with new technologies and user interface techniques to stay current in the fast-moving tech world. My vision is to grow as a professional developer who not only builds but also designs experiences that users love.
+
+When I’m not coding, I’m usually researching design systems, enhancing my projects, or imagining the next interface I want to bring to life.</p>
+  </section>
+
+  <section id="portfolio">
+    <h2>My Projects</h2>
+    <div class="portfolio">
+      <div class="project">
+        <div class="project-title">Boogle - Offline Search Engine</div>
+        <p class="project-desc">A polished offline search UI inspired by Google, built using HTML/CSS/JS with modals, themes, and animations.</p>
+        <a href="#">View Live</a>
+      </div>
+      <div class="project">
+        <div class="project-title">MazeBook - Facebook Login Page Clone</div>
+        <p class="project-desc">A clone of Facebook's login page, designed with attention to detail and responsive layout.</p>
+        <a href="#">View Demo</a>
+      </div>
+      <div class="project">
+        <div class="project-title">Developer Portfolio</div>
+        <p class="project-desc">A sleek and responsive portfolio website with dark mode and smooth animations.</p>
+        <a href="#">Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <div class="skill">
+      <label>HTML</label>
+      <div class="bar"><span style="--fill: 95%"></span></div>
+    </div>
+    <div class="skill">
+      <label>CSS</label>
+      <div class="bar"><span style="--fill: 90%"></span></div>
+    </div>
+    <div class="skill">
+      <label>JavaScript</label>
+      <div class="bar"><span style="--fill: 85%"></span></div>
+    </div>
+  </section>
+
+  <section id="timeline" class="timeline">
+    <h2>Experience & Education</h2>
+    <div class="experience">
+      <strong>Front-End Developer</strong> – Freelance (2023–Present)
+      <p>Built responsive websites and user interfaces for local clients.</p>
+    </div>
+    <div class="experience">
+      <strong>Intermediate Web Development</strong> – Self-taught
+      <p>Completed multiple online certifications and projects in HTML, CSS, and JS.</p>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial">
+      <p>"Muhammad's attention to detail is unmatched. He delivered exactly what I needed on time." – JASON WALKER</p>
+    </div>
+    <div class="testimonial">
+      <p>"A talented developer who knows how to turn designs into interactive products." – MIKE ALEXENDER</p>
+    </div>
+  </section>
+
+  <section id="blog" class="blog">
+    <h2>Blog & Articles</h2>
+    <div class="article">
+      <strong>How I Built My Portfolio</strong>
+      <p>Learn the tools, stack, and tricks I used to build this site.</p>
+    </div>
+    <div class="article">
+      <strong>Why You Should Learn Vanilla JS</strong>
+      <p>A beginner-friendly intro to JavaScript's power without libraries.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form onsubmit="submitForm(event)">
+      <input type="text" class="form-control" placeholder="Your Name" required />
+      <input type="email" class="form-control" placeholder="Your Email" required />
+      <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Muhammad Haseeb. All rights reserved.</p>
+  </footer>
+
+  <button class="scroll-top" id="scrollBtn" onclick="scrollToTop()">Top</button>
+
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+    (function () {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+    const scrollBtn = document.getElementById('scrollBtn');
+    window.addEventListener('scroll', () => {
+      scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function submitForm(e) {
+      e.preventDefault();
+      alert('Message sent! (demo only)');
+    }
+  </script>
+</body>
+</html>
